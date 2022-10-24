@@ -1,0 +1,40 @@
+
+
+/*class Node
+{
+    int data;
+    Node left, right;
+
+    Node(int item)
+    {
+        data = item;
+        left = right = null;
+    }
+}*/
+
+
+class Level_Order_Traverse
+{
+    static ArrayList<ArrayList<Integer>> levelOrder(Node node) 
+    {
+        ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
+        Queue<Node>q=new LinkedList<Node>();
+        if(node==null)return list;
+        q.add(node);
+        while(true){
+            int size=q.size();
+            if(size==0) break;
+            ArrayList<Integer> level=new ArrayList<Integer>();
+            while(size>0){
+            Node curr=q.peek();
+            q.poll();
+            level.add(curr.data);
+            if(curr.left!=null){q.add(curr.left);}
+            if(curr.right!=null){q.add(curr.right);}
+            size--;
+            }
+        list.add(level);
+    }
+    return list;
+    }
+}
